@@ -1,5 +1,7 @@
+import Main from "../components/Main";
+
 const Home = () => {
-  return <div>홈페이지입니다</div>;
+  return <Main />;
 };
 
 export default Home;
