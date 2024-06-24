@@ -56,11 +56,7 @@ const Main = () => {
             다양한 장르의 공연들
           </p>
         </div>
-        <div className="flex ml-80 gap-[30px]">
-          <img
-            src=""
-            className="w-[400px] h-[500px] bg-slate-300 border-none rounded-[20px]"
-          />
+        <div className="flex ml-72 gap-[30px]">
           <img
             src=""
             className="w-[400px] h-[500px] bg-slate-300 border-none rounded-[20px]"
