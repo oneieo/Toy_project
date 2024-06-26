@@ -59,19 +59,19 @@ const Main = () => {
         <div className="flex ml-72 gap-[30px]">
           <img
             src=""
-            className="w-[400px] h-[500px] bg-slate-300 border-none rounded-[20px]"
+            className="w-[400px] h-[500px] bg-slate-300 border-none rounded-[20px] hover:cursor-pointer"
           />
           <img
             src=""
-            className="w-[400px] h-[500px] bg-slate-300 border-none rounded-[20px]"
+            className="w-[400px] h-[500px] bg-slate-300 border-none rounded-[20px] hover:cursor-pointer"
           />
           <img
             src=""
-            className="w-[400px] h-[500px] bg-slate-300 border-none rounded-[20px]"
+            className="w-[400px] h-[500px] bg-slate-300 border-none rounded-[20px] hover:cursor-pointer"
           />
           <img
             src=""
-            className="w-[400px] h-[500px] bg-slate-300 border-none rounded-[20px]"
+            className="w-[400px] h-[500px] bg-slate-300 border-none rounded-[20px] hover:cursor-pointer"
           />
         </div>
       </div>
