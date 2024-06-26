@@ -1,7 +1,7 @@
 const VenueSearch = () => {
   return (
     <div className="flex flex-col justify-center items-center w-full">
-      <div className="flex items-center w-[1370px] mt-[15px]">
+      <div className="flex items-center w-[100px] mt-[15px] mr-[1250px] hover:cursor-pointer">
         <img src="public/chevron-left.png" className="w-[30px] h-[30px]" />
         <p>뒤로가기</p>
       </div>
