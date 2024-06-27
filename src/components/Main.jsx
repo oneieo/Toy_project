@@ -1,3 +1,7 @@
+import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+import { getVenueList } from "../api/venue.api";
+
 const category = [
   {
     icon: "public/free-icon-stage-5618679.png",
@@ -23,6 +27,28 @@ const category = [
 
 const Main = () => {
   // map으로 뿌려야하나 ??
+
+  // const {
+  //   data: venueList,
+  //   isPending,
+  //   isError,
+  // } = useQuery({ queryKey: ["venueList"], queryFn: getVenueList });
+
+  // if (isPending) {
+  //   return <h2>로딩중입니다 ~</h2>;
+  // }
+  // if (isError) {
+  //   return <h2>공연시설목록 데이터 조회 중 오류 발생!!! </h2>;
+  // }
+
+  // console.log(venueList);
+
+  useEffect(() => {
+    const getData = async () => {
+      await getVenueList();
+    };
+    getData();
+  }, []);
 
   return (
     <div className="w-full h-full">
