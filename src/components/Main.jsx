@@ -4,24 +4,24 @@ import { getVenueList } from "../api/venue.api";
 
 const category = [
   {
-    icon: "public/free-icon-stage-5618679.png",
+    icon: "public/free-icon-campfire-10581695.png",
     categoryName: "전체",
   },
   {
-    icon: "public/free-icon-theater-4799473.png",
-    categoryName: "국립",
+    icon: "public/free-icon-camper-1254951.png",
+    categoryName: "글램핑",
   },
   {
-    icon: "public/free-icon-theater-3544180.png",
-    categoryName: "공공",
+    icon: "public/free-icon-cabin-5569227.png",
+    categoryName: "자연휴양림",
   },
   {
-    icon: "public/free-icon-spotlight-5618376.png",
-    categoryName: "민간",
+    icon: "public/free-icon-camping-1533276.png",
+    categoryName: "키즈",
   },
   {
-    icon: "public/free-icon-magic-show-8381493.png",
-    categoryName: "기타",
+    icon: "public/free-icon-tent-8211779.png",
+    categoryName: "반려동물",
   },
 ];
 
@@ -43,17 +43,17 @@ const Main = () => {
 
   // console.log(venueList);
 
-  useEffect(() => {
-    const getData = async () => {
-      await getVenueList();
-    };
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     await getVenueList();
+  //   };
+  //   getData();
+  // }, []);
 
   return (
-    <div className="w-full h-full">
+    <div className="w-[1920px] h-full">
       <h1 className="w-4/5 ml-80 mt-28 text-5xl font-semibold text-gray-900 leading-tight">
-        공연장 정보를 확인하는 <br />
+        캠핑장 정보를 확인하는 <br />
         가장 좋은 방법 !
       </h1>
       <div className="flex">
@@ -71,8 +71,8 @@ const Main = () => {
           })}
         </div>
         <div className="ml-80 font-semibold">
-          <p className="text-lg">내 주변 공연장을 확인하고 싶다면?</p>
-          <p className="text-sky-500 cursor-pointer">가까운 공연장 찾기</p>
+          <p className="text-lg">내 주변 캠핑장을 확인하고 싶다면?</p>
+          <p className="text-sky-500 cursor-pointer">가까운 캠핑장 찾기</p>
         </div>
       </div>
       <div>
