@@ -7,12 +7,12 @@ const ConcertHallDetail = () => {
           <p>뒤로가기</p>
         </div>
         <h1 className="w-[1300px] ml-[80px] mt-[70px] text-[40px]">
-          공연장 정보
+          캠핑장 정보
         </h1>
         <div className="w-[1080px] h-[760px] mt-[20px]">
           <div className=" flex justify-between">
             <div className="flex items-center">
-              <h2 className="text-[32px]">공연시설명</h2>
+              <h2 className="text-[32px]">캠핑시설명</h2>
               <h3 className="text-[25px] ml-[30px] text-slate-500">시설특성</h3>
             </div>
             <div className="flex items-center">
@@ -38,15 +38,15 @@ const ConcertHallDetail = () => {
               </div>
               <div className="flex gap-[7px]">
                 <div className="w-[200px] h-[140px] flex flex-col items-center justify-center bg-slate-400">
-                  <p>공연장명</p>
+                  <p>캠핑장명</p>
                   <p>좌석규모</p>
                 </div>
                 <div className="w-[200px] h-[140px] flex flex-col items-center justify-center bg-slate-400">
-                  <p>공연장명</p>
+                  <p>캠핑장명</p>
                   <p>좌석규모</p>
                 </div>
                 <div className="w-[200px] h-[140px] flex flex-col items-center justify-center bg-slate-400">
-                  <p>공연장명</p>
+                  <p>캠핑장명</p>
                   <p>좌석규모</p>
                 </div>
               </div>

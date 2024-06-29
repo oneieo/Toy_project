@@ -1,4 +1,4 @@
-const ConcertDatail = () => {
+const CampgroundDetail = () => {
   return (
     <>
       <div className="flex flex-col justify-center items-center w-full">
@@ -60,4 +60,4 @@ const ConcertDatail = () => {
   );
 };
 
-export default ConcertDatail;
+export default CampgroundDetail;
