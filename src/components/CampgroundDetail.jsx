@@ -7,7 +7,7 @@ const CampgroundDetail = () => {
           <p>뒤로가기</p>
         </div>
         <h1 className="w-[1300px] ml-[80px] mt-[80px] text-[40px]">
-          공연 정보
+          캠핑장 정보
         </h1>
         <div className="w-[1150px] h-[610px] flex mt-[30px]">
           <img
@@ -17,24 +17,24 @@ const CampgroundDetail = () => {
           />
           <div className=" ml-[70px]">
             <div className="flex items-center justify-between">
-              <h2 className="text-[32px]">공연명</h2>
+              <h2 className="text-[32px]">캠핑장명</h2>
               <div className="flex items-center">
                 <img
                   src="public/reservation_icon.png"
                   className="w-[20px] h-[20px] mr-3"
                 />
                 <p className="text-[18px] font-bold hover:cursor-pointer">
-                  예매하기
+                  예약하기
                 </p>
               </div>
             </div>
             <div className="ml-3 mb-[25px]">
-              <p className="text-[18px] font-bold">장르: </p>
-              <p className="text-[18px] font-bold">기간: </p>
-              <p className="text-[18px] font-bold">기본 정보: </p>
-              <p className="text-[18px] font-bold">제작진: </p>
-              <p className="text-[18px] font-bold">출연진: </p>
-              <p className="text-[18px] font-bold">공연상태: </p>
+              <p className="text-[18px] font-bold">주소: </p>
+              <p className="text-[18px] font-bold">장소안내: </p>
+              <p className="text-[18px] font-bold">옵션: </p>
+              <p className="text-[18px] font-bold">구비시설: </p>
+              <p className="text-[18px] font-bold">동물출입여부: </p>
+              <p className="text-[18px] font-bold">소개: </p>
             </div>
             <div className="flex gap-[37px]">
               <img
