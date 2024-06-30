@@ -1,9 +1,9 @@
-import ConcertHallList from "../components/ConcertHallList";
+import CampgroundList from "../components/CampgroundList";
 
 const VenueList = () => {
   return (
     <>
-      <ConcertHallList />
+      <CampgroundList />
     </>
   );
 };

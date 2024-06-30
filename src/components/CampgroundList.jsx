@@ -1,6 +1,6 @@
 const category = ["전체", "국립", "공공", "민간", "기타"];
 
-const ConcertHallList = () => {
+const CampgroundList = () => {
   // 클릭한 카테고리만 컬러 진하게
   return (
     <>
@@ -91,4 +91,4 @@ const ConcertHallList = () => {
   );
 };
 
-export default ConcertHallList;
+export default CampgroundList;

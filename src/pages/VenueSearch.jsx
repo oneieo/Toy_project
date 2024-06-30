@@ -1,7 +1,7 @@
-import ConcertHallSearch from "../components/ConcertHallSearch";
+import CampgroundSearch from "../components/CampgroundSearch";
 
 const VenueSearch = () => {
-  return <ConcertHallSearch />;
+  return <CampgroundSearch />;
 };
 
 export default VenueSearch;

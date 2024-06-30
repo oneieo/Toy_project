@@ -1,4 +1,4 @@
-const ConcertHallSearch = () => {
+const CampgroundSearch = () => {
   return (
     <div className="flex flex-col justify-center items-center w-full">
       <div className="flex items-center w-[100px] mt-[15px] mr-[1250px] hover:cursor-pointer">
@@ -38,4 +38,4 @@ const ConcertHallSearch = () => {
   );
 };
 
-export default ConcertHallSearch;
+export default CampgroundSearch;
