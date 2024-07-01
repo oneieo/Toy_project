@@ -1,16 +1,33 @@
-const category = ["전체", "국립", "공공", "민간", "기타"];
+import { useState } from "react";
+
+const category = ["전체", "키즈", "반려동물", "카라반", "자연휴양림"];
 
 const CampgroundList = () => {
   // 클릭한 카테고리만 컬러 진하게
+  const [selectedCategory, setSelectedCategory] = useState("전체");
+  const [venueList, setVenueList] = useState([]);
+
+  const handleClickCategory = (item) => {
+    setSelectedCategory(item);
+  };
+
   return (
     <>
       <div>
-        <div className="flex ml-80 mt-[50px] items-end">
-          <h1 className=" mr-[84px]">공연시설목록</h1>
+        <div className="flex ml-80 mt-[50px] items-center">
+          <h1 className=" mr-[84px]">캠핑시설목록</h1>
           <div className="flex gap-[70px]">
             {category.map((item) => {
               return (
-                <h2 key={item} className="hover:cursor-pointer">
+                <h2
+                  key={item}
+                  className={`hover:cursor-pointer ${
+                    selectedCategory === item
+                      ? "text-green-600"
+                      : "text-gray-400"
+                  }`}
+                  onClick={() => handleClickCategory(item)}
+                >
                   {item}
                 </h2>
               );

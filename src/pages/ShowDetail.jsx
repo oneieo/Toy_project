@@ -1,7 +1,7 @@
-import ConcertDatail from "../components/ConcertDatail";
+import CampgroundDetail from "../components/CampgroundDetail";
 
 const ShowDetail = () => {
-  return <ConcertDatail />;
+  return <CampgroundDetail />;
 };
 
 export default ShowDetail;

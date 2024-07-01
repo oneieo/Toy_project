@@ -34,7 +34,10 @@ const Main = () => {
     data: venueList,
     isPending,
     isError,
-  } = useQuery({ queryKey: ["venueList"], queryFn: getVenueList });
+  } = useQuery({
+    queryKey: ["venueList"],
+    queryFn: () => getVenueList(1000),
+  });
 
   if (isPending) {
     return <Loading />;

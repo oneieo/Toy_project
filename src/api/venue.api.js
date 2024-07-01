@@ -5,9 +5,9 @@ const API_KEY =
 
 const URL = `http://apis.data.go.kr/B551011/GoCamping/basedList?serviceKey=${encodeURIComponent(
   API_KEY
-)}&numOfRows=3933&MobileOS=ETC&MobileApp=AppTest&_type=json`;
+)}&numOfRows=`;
 
-export const getVenueList = async () => {
+export const getVenueList = async (rows) => {
   try {
     const {
       data: {
@@ -17,7 +17,9 @@ export const getVenueList = async () => {
           },
         },
       },
-    } = await axios.get(URL);
+    } = await axios.get(
+      `${URL}${rows}&MobileOS=ETC&MobileApp=AppTest&_type=json`
+    );
     return item;
   } catch (error) {
     console.error(" 데이터 불러오기 실패! ", error);
