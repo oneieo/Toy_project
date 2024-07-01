@@ -1,14 +1,43 @@
-import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
+import { getVenueList } from "../api/venue.api";
+import Loading from "./Loading";
+import Error from "./Error";
 
 const category = ["전체", "키즈", "반려동물", "카라반", "자연휴양림"];
 
 const CampgroundList = () => {
   // 클릭한 카테고리만 컬러 진하게
-  const [selectedCategory, setSelectedCategory] = useState("전체");
-  const [venueList, setVenueList] = useState([]);
+  const [clickedKeyword, setClickedKeyword] = useState("전체");
+  const {
+    data: venueList,
+    isPending,
+    isError,
+  } = useQuery({ queryKey: ["venueList"], queryFn: () => getVenueList(10) });
+  let [selectedCategory, setSelectedCategory] = useState(venueList);
 
-  const handleClickCategory = (item) => {
-    setSelectedCategory(item);
+  if (isPending) {
+    return <Loading />;
+  }
+  if (isError) {
+    return <Error />;
+  }
+
+  // console.log(venueList);
+
+  const handleClickKeyword = (item) => {
+    setClickedKeyword(item);
+    if (item === "전체") {
+      selectedCategory = venueList;
+      console.log("전체 =>", selectedCategory);
+    }
+
+    if (item === "키즈") {
+      selectedCategory = venueList.filter((data) =>
+        //data.sbrsCl.contains("트렘폴린" || "놀이터" || "물놀이장")
+      );
+      console.log("키즈 =>", selectedCategory);
+    }
   };
 
   return (
@@ -22,11 +51,9 @@ const CampgroundList = () => {
                 <h2
                   key={item}
                   className={`hover:cursor-pointer ${
-                    selectedCategory === item
-                      ? "text-green-600"
-                      : "text-gray-400"
+                    clickedKeyword === item ? "text-green-600" : "text-gray-400"
                   }`}
-                  onClick={() => handleClickCategory(item)}
+                  onClick={() => handleClickKeyword(item)}
                 >
                   {item}
                 </h2>
