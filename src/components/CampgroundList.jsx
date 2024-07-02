@@ -13,8 +13,9 @@ const CampgroundList = () => {
     data: venueList,
     isPending,
     isError,
-  } = useQuery({ queryKey: ["venueList"], queryFn: () => getVenueList(3000) });
-  let [selectedCategory, setSelectedCategory] = useState(venueList);
+  } = useQuery({ queryKey: ["venueList"], queryFn: () => getVenueList(20) });
+
+  const [selectedCategory, setSelectedCategory] = useState([]);
 
   if (isPending) {
     return <Loading />;
@@ -26,7 +27,7 @@ const CampgroundList = () => {
   const handleClickKeyword = (item) => {
     setClickedKeyword(item);
     if (item === "전체") {
-      selectedCategory = venueList;
+      setSelectedCategory(venueList);
     }
 
     if (item === "키즈") {
@@ -34,7 +35,9 @@ const CampgroundList = () => {
         const keyword = ["놀이터", "트렘폴린", "물놀이장"];
         return keyword.some((keyword) => data.includes(keyword));
       };
-      selectedCategory = venueList.filter((data) => isKidFriendly(data.sbrsCl));
+      setSelectedCategory(
+        venueList.filter((data) => isKidFriendly(data.sbrsCl))
+      );
     }
 
     if (item === "반려동물") {
@@ -42,8 +45,8 @@ const CampgroundList = () => {
         const keyword = ["가능", "가능(소형견)"];
         return keyword.some((keyword) => data.includes(keyword));
       };
-      selectedCategory = venueList.filter((data) =>
-        isAnimalFriendly(data.animalCmgCl)
+      setSelectedCategory(
+        venueList.filter((data) => isAnimalFriendly(data.animalCmgCl))
       );
     }
 
@@ -52,8 +55,10 @@ const CampgroundList = () => {
         const keyword = ["카라반", "캐러밴"];
         return keyword.some((keyword) => data.includes(keyword));
       };
-      selectedCategory = venueList.filter(
-        (data) => isCaravan(data.induty) || isCaravan(data.facltNm)
+      setSelectedCategory(
+        venueList.filter(
+          (data) => isCaravan(data.induty) || isCaravan(data.facltNm)
+        )
       );
     }
 
@@ -62,11 +67,13 @@ const CampgroundList = () => {
         const keyword = ["자연휴양림", "휴양림"];
         return keyword.some((keyword) => data.includes(keyword));
       };
-      selectedCategory = venueList.filter((data) =>
-        isForestFriendly(data.facltNm)
+      setSelectedCategory(
+        venueList.filter((data) => isForestFriendly(data.facltNm))
       );
     }
   };
+
+  console.log(selectedCategory);
 
   return (
     <>
