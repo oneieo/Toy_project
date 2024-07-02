@@ -13,7 +13,7 @@ const CampgroundList = () => {
     data: venueList,
     isPending,
     isError,
-  } = useQuery({ queryKey: ["venueList"], queryFn: () => getVenueList(10) });
+  } = useQuery({ queryKey: ["venueList"], queryFn: () => getVenueList(3000) });
   let [selectedCategory, setSelectedCategory] = useState(venueList);
 
   if (isPending) {
@@ -23,20 +23,48 @@ const CampgroundList = () => {
     return <Error />;
   }
 
-  // console.log(venueList);
-
   const handleClickKeyword = (item) => {
     setClickedKeyword(item);
     if (item === "전체") {
       selectedCategory = venueList;
-      console.log("전체 =>", selectedCategory);
     }
 
     if (item === "키즈") {
+      const isKidFriendly = (data) => {
+        const keyword = ["놀이터", "트렘폴린", "물놀이장"];
+        return keyword.some((keyword) => data.includes(keyword));
+      };
+      selectedCategory = venueList.filter((data) => isKidFriendly(data.sbrsCl));
+    }
+
+    if (item === "반려동물") {
+      const isAnimalFriendly = (data) => {
+        const keyword = ["가능", "가능(소형견)"];
+        return keyword.some((keyword) => data.includes(keyword));
+      };
       selectedCategory = venueList.filter((data) =>
-        //data.sbrsCl.contains("트렘폴린" || "놀이터" || "물놀이장")
+        isAnimalFriendly(data.animalCmgCl)
       );
-      console.log("키즈 =>", selectedCategory);
+    }
+
+    if (item === "카라반") {
+      const isCaravan = (data) => {
+        const keyword = ["카라반", "캐러밴"];
+        return keyword.some((keyword) => data.includes(keyword));
+      };
+      selectedCategory = venueList.filter(
+        (data) => isCaravan(data.induty) || isCaravan(data.facltNm)
+      );
+    }
+
+    if (item === "자연휴양림") {
+      const isForestFriendly = (data) => {
+        const keyword = ["자연휴양림", "휴양림"];
+        return keyword.some((keyword) => data.includes(keyword));
+      };
+      selectedCategory = venueList.filter((data) =>
+        isForestFriendly(data.facltNm)
+      );
     }
   };
 
