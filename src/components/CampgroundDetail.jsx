@@ -3,7 +3,7 @@ const CampgroundDetail = () => {
     <>
       <div className="flex flex-col justify-center items-center w-full">
         <div className="flex items-center w-[100px] mt-[15px] mr-[1250px] hover:cursor-pointer">
-          <img src="public/chevron-left.png" className="w-[30px] h-[30px]" />
+          <img src="/chevron-left.png" className="w-[30px] h-[30px]" />
           <p>뒤로가기</p>
         </div>
         <h1 className="w-[1300px] ml-[80px] mt-[80px] text-[40px]">
@@ -20,7 +20,7 @@ const CampgroundDetail = () => {
               <h2 className="text-[32px]">캠핑장명</h2>
               <div className="flex items-center">
                 <img
-                  src="public/reservation_icon.png"
+                  src="/reservation_icon.png"
                   className="w-[20px] h-[20px] mr-3"
                 />
                 <p className="text-[18px] font-bold hover:cursor-pointer">

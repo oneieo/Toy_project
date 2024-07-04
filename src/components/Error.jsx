@@ -9,7 +9,7 @@ const Error = () => {
       <h3 className="font-semibold text-gray-400" onClick={() => navigate("/")}>
         홈으로 돌아가기
       </h3>
-      <img src="public/spinner.gif" />
+      <img src="/spinner.gif" />
     </div>
   );
 };

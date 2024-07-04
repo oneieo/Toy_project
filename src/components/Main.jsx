@@ -6,23 +6,23 @@ import Error from "./Error";
 
 const category = [
   {
-    icon: "public/free-icon-campfire-10581695.png",
+    icon: "/free-icon-campfire-10581695.png",
     categoryName: "전체",
   },
   {
-    icon: "public/free-icon-camping-1533276.png",
+    icon: "/free-icon-camping-1533276.png",
     categoryName: "키즈",
   },
   {
-    icon: "public/free-icon-tent-8211779.png",
+    icon: "/free-icon-tent-8211779.png",
     categoryName: "반려동물",
   },
   {
-    icon: "public/free-icon-camper-1254951.png",
+    icon: "/free-icon-camper-1254951.png",
     categoryName: "카라반",
   },
   {
-    icon: "public/free-icon-cabin-5569227.png",
+    icon: "/free-icon-cabin-5569227.png",
     categoryName: "자연휴양림",
   },
 ];

@@ -155,12 +155,9 @@ const CampgroundList = () => {
             <p className="mr-10">주소(-구까지만)</p>
           </div>
           <div className="ml-[500px]">
+            <img src="/chevron-left.png" className="hover:cursor-pointer" />
             <img
-              src="public/chevron-left.png"
-              className="hover:cursor-pointer"
-            />
-            <img
-              src="public/chevron-right.png"
+              src="/chevron-right.png"
               className="ml-[200px] hover:cursor-pointer"
             />
           </div>
