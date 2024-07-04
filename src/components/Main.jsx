@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
 import { getVenueList } from "../api/venue.api";
 import Loading from "./Loading";
 import Error from "./Error";
@@ -30,23 +29,23 @@ const category = [
 const Main = () => {
   // map으로 뿌려야하나 ??
 
-  const {
-    data: venueList,
-    isPending,
-    isError,
-  } = useQuery({
-    queryKey: ["venueList"],
-    queryFn: () => getVenueList(1000),
-  });
+  // const {
+  //   data: venueListLength,
+  //   isPending,
+  //   isError,
+  // } = useQuery({
+  //   queryKey: ["venueListLength"],
+  //   queryFn: () => getVenueList(4000),
+  // });
 
-  if (isPending) {
-    return <Loading />;
-  }
-  if (isError) {
-    return <Error />;
-  }
+  // if (isPending) {
+  //   return <Loading />;
+  // }
+  // if (isError) {
+  //   return <Error />;
+  // }
 
-  console.log(venueList);
+  // console.log(venueListLength);
 
   return (
     <div className="w-[1920px] h-full">

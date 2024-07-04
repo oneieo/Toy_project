@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
-import { getVenueList } from "../api/venue.api";
+import { useState } from "react";
+import { getVenueListPerPage } from "../api/venue.api";
 import Loading from "./Loading";
 import Error from "./Error";
 
@@ -9,13 +9,20 @@ const category = ["전체", "키즈", "반려동물", "카라반", "자연휴양
 const CampgroundList = () => {
   // 클릭한 카테고리만 컬러 진하게
   const [clickedKeyword, setClickedKeyword] = useState("전체");
+  const [pageNo, setPageNo] = useState(1);
   const {
     data: venueList,
     isPending,
     isError,
-  } = useQuery({ queryKey: ["venueList"], queryFn: () => getVenueList(20) });
+  } = useQuery({
+    queryKey: ["venueList"],
+    queryFn: () => getVenueListPerPage(8, pageNo),
+  });
 
-  const [selectedCategory, setSelectedCategory] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(venueList || []);
+
+  // 페이지당 항목 수 , 총 데이터 개수(state로 ...), 전체 페이지 수(요것도 state...), 페이지 번호(클릭함에 따라 바뀌므로 state)
+  // 전체 페이지 수 = Math.ceil( 총 데이터 개수 / 페이지당 항목 수  )
 
   if (isPending) {
     return <Loading />;
@@ -73,7 +80,7 @@ const CampgroundList = () => {
     }
   };
 
-  console.log(selectedCategory);
+  console.log(venueList);
 
   return (
     <>
@@ -98,68 +105,39 @@ const CampgroundList = () => {
         </div>
         <div className="ml-80 mt-[35px]">
           {/* 시설목록 뿌려주기 - 페이지네이션... */}
-          <div className="flex items-center justify-between gap-7 w-[1300px] h-[80px] bg-slate-300 mb-4 hover:cursor-pointer">
-            <div className="flex items-center">
-              <h2 className="ml-10">공연시설명</h2>
-              <p className="ml-5">공연장명, 공연장명, 공연장명</p>
-            </div>
-            <p className="mr-10">주소(-구까지만)</p>
-          </div>
-          <div className="flex items-center justify-between gap-7 w-[1300px] h-[80px] bg-slate-300 mb-4">
-            <div className="flex items-center">
-              <h2 className="ml-10">공연시설명</h2>
-              <p className="ml-5">공연장명, 공연장명, 공연장명</p>
-            </div>
-            <p className="mr-10">주소(-구까지만)</p>
-          </div>
-          <div className="flex items-center justify-between gap-7 w-[1300px] h-[80px] bg-slate-300 mb-4">
-            <div className="flex items-center">
-              <h2 className="ml-10">공연시설명</h2>
-              <p className="ml-5">공연장명, 공연장명, 공연장명</p>
-            </div>
-            <p className="mr-10">주소(-구까지만)</p>
-          </div>
-          <div className="flex items-center justify-between gap-7 w-[1300px] h-[80px] bg-slate-300 mb-4">
-            <div className="flex items-center">
-              <h2 className="ml-10">공연시설명</h2>
-              <p className="ml-5">공연장명, 공연장명, 공연장명</p>
-            </div>
-            <p className="mr-10">주소(-구까지만)</p>
-          </div>
-          <div className="flex items-center justify-between gap-7 w-[1300px] h-[80px] bg-slate-300 mb-4">
-            <div className="flex items-center">
-              <h2 className="ml-10">공연시설명</h2>
-              <p className="ml-5">공연장명, 공연장명, 공연장명</p>
-            </div>
-            <p className="mr-10">주소(-구까지만)</p>
-          </div>
-          <div className="flex items-center justify-between gap-7 w-[1300px] h-[80px] bg-slate-300 mb-4">
-            <div className="flex items-center">
-              <h2 className="ml-10">공연시설명</h2>
-              <p className="ml-5">공연장명, 공연장명, 공연장명</p>
-            </div>
-            <p className="mr-10">주소(-구까지만)</p>
-          </div>
-          <div className="flex items-center justify-between gap-7 w-[1300px] h-[80px] bg-slate-300 mb-4">
-            <div className="flex items-center">
-              <h2 className="ml-10">공연시설명</h2>
-              <p className="ml-5">공연장명, 공연장명, 공연장명</p>
-            </div>
-            <p className="mr-10">주소(-구까지만)</p>
-          </div>
-          <div className="flex items-center justify-between gap-7 w-[1300px] h-[80px] bg-slate-300 mb-4">
-            <div className="flex items-center">
-              <h2 className="ml-10">공연시설명</h2>
-              <p className="ml-5">공연장명, 공연장명, 공연장명</p>
-            </div>
-            <p className="mr-10">주소(-구까지만)</p>
-          </div>
+          {selectedCategory.length > 0
+            ? selectedCategory.map((venue) => (
+                <div
+                  key={venue.contentId}
+                  className="flex items-center justify-between gap-7 w-[1300px] h-[80px] bg-slate-300 mb-4 hover:cursor-pointer"
+                >
+                  <div className="flex items-center">
+                    <h2 className="ml-10">{venue.facltNm}</h2>
+                    <p className="ml-5 w-[630px] h-[45px] flex items-center text-[19px]">
+                      {venue.resveCl}
+                    </p>
+                  </div>
+                  <p className="mr-10 text-[18px]">{venue.addr1}</p>
+                </div>
+              ))
+            : venueList.map((venue) => (
+                <div
+                  key={venue.contentId}
+                  className="flex items-center justify-between gap-7 w-[1300px] h-[80px] bg-slate-300 mb-4 hover:cursor-pointer"
+                >
+                  <div className="flex items-center">
+                    <h2 className="ml-10">{venue.facltNm}</h2>
+                    <p className="ml-5 w-[630px] h-[45px] flex items-center text-[19px]">
+                      {venue.resveCl}
+                    </p>
+                  </div>
+                  <p className="mr-10 text-[18px]">{venue.addr1}</p>
+                </div>
+              ))}
+
           <div className="ml-[500px]">
             <img src="/chevron-left.png" className="hover:cursor-pointer" />
-            <img
-              src="/chevron-right.png"
-              className="ml-[200px] hover:cursor-pointer"
-            />
+            <img src="/chevron-right.png" className="hover:cursor-pointer" />
           </div>
         </div>
       </div>
