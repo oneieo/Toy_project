@@ -74,7 +74,7 @@ const Main = () => {
       </div>
       <div>
         <div className="flex ml-80 mt-20 items-end">
-          <h2>여기서 캠핑 어때?</h2>
+          <h2>여기서 캠핑 어때요?</h2>
           <p className="ml-8 text-lg font-semibold text-gray-400">
             모두가 안전한 캠핑하기
           </p>

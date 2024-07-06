@@ -15,7 +15,7 @@ const CampgroundSearch = () => {
         <p className="text-sky-500 cursor-pointer">전체 캠핑장 목록</p>
       </div>
       <h1 className="mt-[90px] mb-[90px] text-[45px]">
-        서울특별시 근처 공연장
+        서울특별시 근처 캠핑장
       </h1>
       <div className="w-[1300px] flex flex-wrap gap-[35px]">
         <div className="w-[400px] h-[450px] bg-slate-300 rounded-3xl">

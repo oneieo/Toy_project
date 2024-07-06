@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getVenueListLength, getVenueListPerPage } from "../api/venue.api";
 import Loading from "./Loading";
 import Error from "./Error";
+import { useNavigate } from "react-router-dom";
 
 const category = ["전체", "키즈", "반려동물", "카라반", "자연휴양림"];
 const ITEMS_PER_PAGE = 8;
@@ -12,6 +13,7 @@ const CampgroundList = () => {
   const [clickedKeyword, setClickedKeyword] = useState("전체");
   const [totalPages, setTotalPages] = useState(3);
   const [pageNo, setPageNo] = useState(1);
+  const navigate = useNavigate();
 
   const {
     data: venueListPerPage,
@@ -134,11 +136,12 @@ const CampgroundList = () => {
                 <div
                   key={venue.contentId}
                   className="flex items-center justify-between gap-7 w-[1300px] h-[80px] bg-slate-300 mb-4 hover:cursor-pointer"
+                  onClick={() => navigate(`/venue-detail/${venue.contentId}`)}
                 >
                   <div className="flex items-center">
                     <h2 className="ml-10">{venue.facltNm}</h2>
-                    <p className="ml-5 w-[600px] h-[45px] flex items-center text-[19px]">
-                      {venue.resveCl}
+                    <p className="ml-5 w-[500px] h-[45px] flex items-center text-[19px]">
+                      {venue.resveCl === "" ? "상세페이지 참고" : venue.resveCl}
                     </p>
                   </div>
                   <p className="mr-10 text-[18px]">{venue.addr1}</p>
@@ -148,41 +151,39 @@ const CampgroundList = () => {
                 <div
                   key={venue.contentId}
                   className="flex items-center justify-between gap-7 w-[1300px] h-[80px] bg-slate-300 mb-4 hover:cursor-pointer"
+                  onClick={() => navigate(`/venue-detail/${venue.contentId}`)}
                 >
                   <div className="flex items-center">
                     <h2 className="ml-10">{venue.facltNm}</h2>
-                    <p className="ml-5 w-[600px] h-[45px] flex items-center text-[19px]">
-                      {venue.resveCl}
+                    <p className="ml-5 w-[500px] h-[45px] flex items-center text-[19px]">
+                      {venue.resveCl === "" ? "상세페이지 참고" : venue.resveCl}
                     </p>
                   </div>
                   <p className="mr-10 text-[18px]">{venue.addr1}</p>
                 </div>
               ))}
+        </div>
+        <div className="flex justify-center items-center">
+          <img
+            src="/chevron-left.png"
+            className="hover:cursor-pointer"
+            onClick={() => setPageNo((prev) => Math.max(prev - 1, 1))}
+            disabled={pageNo === 1}
+          />
 
-          <div className="w-full flex justify-center items-center">
-            <img
-              src="/chevron-left.png"
-              className="hover:cursor-pointer"
-              onClick={() => setPageNo((prev) => Math.max(prev - 1, 1))}
-              disabled={pageNo === 1}
-            />
-
-            {[...Array(totalPages)].map((_, index) => {
-              return (
-                <button key={index + 1} onClick={() => setPageNo(index + 1)}>
-                  {index + 1}
-                </button>
-              );
-            })}
-            <img
-              src="/chevron-right.png"
-              className="hover:cursor-pointer"
-              onClick={() =>
-                setPageNo((prev) => Math.min(prev + 1, totalPages))
-              }
-              disabled={pageNo === totalPages}
-            />
-          </div>
+          {[...Array(totalPages)].map((_, index) => {
+            return (
+              <button key={index + 1} onClick={() => setPageNo(index + 1)}>
+                {index + 1}
+              </button>
+            );
+          })}
+          <img
+            src="/chevron-right.png"
+            className="hover:cursor-pointer"
+            onClick={() => setPageNo((prev) => Math.min(prev + 1, totalPages))}
+            disabled={pageNo === totalPages}
+          />
         </div>
       </div>
     </>
