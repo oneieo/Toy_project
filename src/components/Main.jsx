@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getVenueList } from "../api/venue.api";
+import { getVenueListLength } from "../api/venue.api";
 import Loading from "./Loading";
 import Error from "./Error";
 

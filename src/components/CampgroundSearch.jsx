@@ -6,13 +6,13 @@ const CampgroundSearch = () => {
         <p>뒤로가기</p>
       </div>
       <div className="w-[1070px] flex items-center justify-between">
-        <h2 className="text-3xl">공연장 찾기</h2>
+        <h2 className="text-3xl">캠핑장 찾기</h2>
         <input
           type="text"
           placeholder="위치 또는 공연장 이름으로 검색"
           className="w-[450px] h-[50px] indent-3 text-base focus:outline-0 rounded-xl border-spacing-1"
         />
-        <p className="text-sky-500 cursor-pointer">전체 공연장 목록</p>
+        <p className="text-sky-500 cursor-pointer">전체 캠핑장 목록</p>
       </div>
       <h1 className="mt-[90px] mb-[90px] text-[45px]">
         서울특별시 근처 공연장

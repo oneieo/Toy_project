@@ -7,7 +7,7 @@ const URL = `http://apis.data.go.kr/B551011/GoCamping/basedList?serviceKey=${enc
   API_KEY
 )}`;
 
-export const getVenueList = async (rows) => {
+export const getVenueListLength = async (rows) => {
   const { data } = await axios.get(
     `${URL}&numOfRows=${rows}&MobileOS=ETC&MobileApp=AppTest&_type=json`
   );
