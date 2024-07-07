@@ -1,10 +1,19 @@
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+
 const CampgroundDetail = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const venueList = useSelector((state) => state.venueList.venues);
+  const matchedVenue = venueList.find((item) => item.contentId === id);
+
   return (
     <>
       <div className="flex flex-col justify-center items-center w-full">
         <div className="flex items-center w-[100px] mt-[15px] mr-[1250px] hover:cursor-pointer">
           <img src="/chevron-left.png" className="w-[30px] h-[30px]" />
-          <p>뒤로가기</p>
+          <p onClick={() => navigate(-1)}>뒤로가기</p>
         </div>
         <h1 className="w-[1300px] ml-[80px] mt-[80px] text-[40px]">
           캠핑장 정보
@@ -17,7 +26,7 @@ const CampgroundDetail = () => {
           />
           <div className=" ml-[70px]">
             <div className="flex items-center justify-between">
-              <h2 className="text-[32px]">캠핑장명</h2>
+              <h2 className="text-[32px]">{matchedVenue.facltNm}</h2>
               <div className="flex items-center">
                 <img
                   src="/reservation_icon.png"

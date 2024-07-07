@@ -4,6 +4,8 @@ import { getVenueListLength, getVenueListPerPage } from "../api/venue.api";
 import Loading from "./Loading";
 import Error from "./Error";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loadVenues } from "../redux/slices/venueListSlice";
 
 const category = ["전체", "키즈", "반려동물", "카라반", "자연휴양림"];
 const ITEMS_PER_PAGE = 8;
@@ -14,6 +16,7 @@ const CampgroundList = () => {
   const [totalPages, setTotalPages] = useState(3);
   const [pageNo, setPageNo] = useState(1);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     data: venueListPerPage,
@@ -29,6 +32,7 @@ const CampgroundList = () => {
   useEffect(() => {
     if (venueListPerPage) {
       setSelectedCategory(venueListPerPage);
+      dispatch(loadVenues(venueListPerPage));
     }
   }, [venueListPerPage]);
 
